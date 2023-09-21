@@ -1,4 +1,4 @@
-const APIGatewayProxyHandler = async (event) => {
+const uploadFile: APIGatewayProxyHandler = async (event) => {
     const { file, fields } = await parseFormData(event);
     const tags = { filename: file.filename };
     try {
@@ -12,13 +12,13 @@ const APIGatewayProxyHandler = async (event) => {
         .promise();
       return {
         statusCode: 200,
-        body: JSON.stringify({ description: ‘file created’, result: ‘ok’ }),
+        body: JSON.stringify({ description: 'file created', result: 'ok' }),
       };
     } catch (_error) {
       // this is not ideal error handling, but good enough for the purpose of this example
       return {
         statusCode: 409,
-        body: JSON.stringify({ description: ‘something went wrong’, result: ‘error’ })
+        body: JSON.stringify({ description: 'something went wrong', result: 'error' })
       }
     }
   };

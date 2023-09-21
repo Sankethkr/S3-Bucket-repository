@@ -5,7 +5,7 @@ provider:
   apiGateway:
     # accepted binary type for file uploads
     binaryMediaTypes:
-      - ‘multipart/form-data’
+      - 'multipart/form-data'
 functions:
   # sync upload
   uploadFile:
@@ -36,9 +36,9 @@ resources:
                 - s3:PutObjectTagging
               Resource:
                 Fn::Join:
-                  - “”
-                  - - “arn:aws:s3:::”
+                  - ""
+                  - - "arn:aws:s3:::"
                     - Ref: MyServerlessBucket
-                    - “/*”
+                    - "/*"
         Roles:
-          - serverless-dev
+          - serverless-s3-role

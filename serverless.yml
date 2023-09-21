@@ -27,7 +27,7 @@ resources:
       Properties:
         PolicyName: UploadObjects
         PolicyDocument:
-          Version: ‘policy date’
+          Version: "2012-10-17"
           Statement:
             - Sid: LambdaPutObjects
               Effect: Allow
@@ -41,4 +41,4 @@ resources:
                     - Ref: MyServerlessExampleBucket
                     - “/*”
         Roles:
-          - serverless-example-dev-us-east-1-role
+          - serverless-dev

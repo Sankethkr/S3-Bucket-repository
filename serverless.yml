@@ -2,6 +2,7 @@ service: s3-bucket-crud-api
 provider:
   name: aws
   runtime: nodejs18.x
+  region: ap-south-1
   apiGateway:
     # accepted binary type for file uploads
     binaryMediaTypes:
@@ -9,7 +10,7 @@ provider:
 functions:
   # sync upload
   uploadFile:
-    handler: build.uploadFile
+    handler: api.handle
     events:
       - http:
           method: post
@@ -17,7 +18,7 @@ functions:
           cors: true
 resources:
   Resources:
-    MyServerlessBucket:
+    MyServerlessExampleBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: serverless-example1-bucket
@@ -27,7 +28,7 @@ resources:
       Properties:
         PolicyName: UploadObjects
         PolicyDocument:
-          Version: "2012-10-17"
+          Version: '2012-10-17'
           Statement:
             - Sid: LambdaPutObjects
               Effect: Allow
@@ -38,7 +39,7 @@ resources:
                 Fn::Join:
                   - ""
                   - - "arn:aws:s3:::"
-                    - Ref: MyServerlessBucket
+                    - Ref: MyServerlessExampleBucket
                     - "/*"
         Roles:
           - serverless-s3-dev

@@ -41,4 +41,4 @@ resources:
                     - Ref: MyServerlessBucket
                     - "/*"
         Roles:
-          - serverless-s3-role
+          - serverless-s3-dev

@@ -17,7 +17,7 @@ functions:
           cors: true
 resources:
   Resources:
-    MyServerlessExampleBucket:
+    MyServerlessBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: serverless-example-bucket
@@ -38,7 +38,7 @@ resources:
                 Fn::Join:
                   - “”
                   - - “arn:aws:s3:::”
-                    - Ref: MyServerlessExampleBucket
+                    - Ref: MyServerlessBucket
                     - “/*”
         Roles:
           - serverless-dev
